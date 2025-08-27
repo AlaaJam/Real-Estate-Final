@@ -88,9 +88,26 @@ Property.Gallery = ({ children, ...restProps }) => {
 Property.ImageContainer = ({ children, ...restProps }) => {
   return <ImageContainer {...restProps}>{children}</ImageContainer>;
 };
-Property.Image = ({ children, source, ...restProps }) => {
-  return <Image src={`/images/houses/${source}`} {...restProps} />;
+Property.Image = ({ children, source, alt, ...restProps }) => {
+  const first = Array.isArray(source) ? source[0] : source;
+  const isAbsolute = typeof first === "string" && (
+    first.startsWith("http://") ||
+    first.startsWith("https://") ||
+    first.startsWith("/uploads/") ||
+    first.startsWith("/images/")
+  );
+  const src = isAbsolute ? first : `/images/houses/${first || "image2.jpg"}`;
+
+  const onError = (e) => {
+    if (e.currentTarget.dataset.fallback !== "1") {
+      e.currentTarget.dataset.fallback = "1";
+      e.currentTarget.src = "/images/placeholder.jpg";
+    }
+  };
+
+  return <Image src={src} alt={alt || "Property"} onError={onError} {...restProps} />;
 };
+
 Property.Info = function PropertyInfo({ children, ...restProps }) {
   return <Info {...restProps}>{children}</Info>;
 };

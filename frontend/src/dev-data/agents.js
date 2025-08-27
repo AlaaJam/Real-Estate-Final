@@ -35,7 +35,7 @@ const agents = [
         location: "Mombasa",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
-        images: ["image2.jpg", "image3.jpg", "image7.jpg", "image8.jpg"],
+        images: ["image2.jpg", "image6.jpg", "image7.jpg", "image8.jpg"],
         amenities: [
           "Air Conditioning",
           "Security System",
@@ -76,7 +76,7 @@ const agents = [
         location: "Nakuru",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
-        images: ["image8.jpg", "image3.jpg", "image7.jpg", "image8.jpg"],
+        images: ["image8.jpg", "image6.jpg", "image7.jpg", "image8.jpg"],
         amenities: [
           "Air Conditioning",
           "Security System",
@@ -137,7 +137,7 @@ const agents = [
         location: "Mombasa",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
-        images: ["image2.jpg", "image3.jpg", "image7.jpg", "image8.jpg"],
+        images: ["image2.jpg", "image6.jpg", "image7.jpg", "image8.jpg"],
         amenities: [
           "Air Conditioning",
           "Security System",
@@ -178,7 +178,7 @@ const agents = [
         location: "Nakuru",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
-        images: ["image8.jpg", "image3.jpg", "image7.jpg", "image8.jpg"],
+        images: ["image8.jpg", "image6.jpg", "image7.jpg", "image8.jpg"],
         amenities: [
           "Air Conditioning",
           "Security System",
@@ -239,7 +239,7 @@ const agents = [
         location: "Mombasa",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
-        images: ["image2.jpg", "image3.jpg", "image7.jpg", "image8.jpg"],
+        images: ["image2.jpg", "image6.jpg", "image7.jpg", "image8.jpg"],
         amenities: [
           "Air Conditioning",
           "Security System",
@@ -280,7 +280,7 @@ const agents = [
         location: "Nakuru",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
-        images: ["image8.jpg", "image3.jpg", "image7.jpg", "image8.jpg"],
+        images: ["image8.jpg", "image6.jpg", "image7.jpg", "image8.jpg"],
         amenities: [
           "Air Conditioning",
           "Security System",
@@ -341,7 +341,7 @@ const agents = [
         location: "Mombasa",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
-        images: ["image2.jpg", "image3.jpg", "image7.jpg", "image8.jpg"],
+        images: ["image2.jpg", "image8.jpg", "image7.jpg", "image8.jpg"],
         amenities: [
           "Air Conditioning",
           "Security System",
@@ -382,7 +382,7 @@ const agents = [
         location: "Nakuru",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
-        images: ["image8.jpg", "image3.jpg", "image7.jpg", "image8.jpg"],
+        images: ["image8.jpg", "image6.jpg", "image7.jpg", "image8.jpg"],
         amenities: [
           "Air Conditioning",
           "Security System",

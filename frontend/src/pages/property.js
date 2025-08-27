@@ -44,6 +44,22 @@ const Listing = () => {
     dispatch(getFeaturedList());
   }, [dispatch, id]);
 
+
+  const isLoading = !property || !property.id;
+if (isLoading) {
+  return (
+    <>
+      <HeaderContainer bg="false" />
+      <Section bgColor="--bs-fade-info">
+        <Section.InnerContainer>
+          <div style={{padding: 24}}>Loading property…</div>
+        </Section.InnerContainer>
+      </Section>
+      <FooterContainer />
+    </>
+  );
+}
+
   return (
     <>
       <HeaderContainer bg="false" />

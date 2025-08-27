@@ -93,7 +93,7 @@ export async function seedFakeProperties() {
       type: "rental",
       listed_in: "rentals",
       category: "Apartments",
-      images: ["image2.jpg","image3.jpg","image7.jpg","image8.jpg"],
+      images: ["image2.jpg","8.jpg","image7.jpg","image8.jpg"],
       amenities: ["Air Conditioning","Security System","Parking Space","Gym Room","Free WIFI","Fire Place"],
       features: { bedrooms: 3, status: 1, garage: 1, elevator: 1, kitchen: 1 },
       address: { address: "Abdoun", county: "Amman", city: "Amman", street: "Zahran St", area: "Amman" }
@@ -109,7 +109,7 @@ export async function seedFakeProperties() {
       type: "sale",
       listed_in: "sales",
       category: "Houses",
-      images: ["image4.jpg","image3.jpg","image7.jpg","image8.jpg"],
+      images: ["image8.jpg","image5.jpg","image7.jpg","image8.jpg"],
       amenities: ["Parking Space","Gym Room","Free WIFI","Fire Place"],
       features: { bedrooms: 3, status: 1, garage: 1, elevator: 0, kitchen: 1 },
       address: { address: "Khalda", county: "Amman", city: "Amman", street: "Wasfi Al Tal", area: "Amman" }
@@ -125,7 +125,7 @@ export async function seedFakeProperties() {
       type: "rental",
       listed_in: "rentals",
       category: "Offices",
-      images: ["image2.jpg","image3.jpg","image7.jpg","image8.jpg"],
+      images: ["image2.jpg","image8.jpg","image7.jpg","image8.jpg"],
       amenities: ["Air Conditioning","Security System","Parking Space"],
       features: { bedrooms: 0, status: 1, garage: 1, elevator: 1, kitchen: 0 },
       address: { address: "Shmeisani", county: "Amman", city: "Amman", street: "Queen Noor St", area: "Amman" }
