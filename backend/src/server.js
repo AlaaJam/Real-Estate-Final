@@ -7,6 +7,9 @@ import usersRouter from "./routes/users.js";
 
 import propertiesRouter from "./routes/properties.js";
 
+import { UPLOAD_DIR } from "./uploads.js";
+
+// Make uploaded files reachable at http://localhost:7542/images/houses/...
 
 
 dotenv.config();
@@ -17,7 +20,7 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
-
+app.use("/images/houses", express.static(UPLOAD_DIR));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -29,7 +32,9 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRouter);  // <-- mount
 app.use("/api/users", usersRouter);
+// serve uploaded images
 
+app.use("/images/houses", express.static(UPLOAD_DIR));
 
 // Example protected endpoint
 app.get("/api/profile", requireAuth, (req, res) => {

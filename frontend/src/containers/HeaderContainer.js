@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import links from "../constants/routes/nav-links";
+import links from "../routes/nav-links";
 import { HeaderWrapper, Banner, Jumbotron } from "../components";
 import { logout } from "../redux/actions/authActions";
 import SideNavigationContainer from "./SideNavigationContainer";

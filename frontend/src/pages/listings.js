@@ -41,6 +41,7 @@ const Listings = () => {
               ) : (
                 <div style={cardsStyle}>
                   {properties.map((p) => (
+                    
                     <ListingItemContainer key={p.id} featured={p} width="100%" />
                   ))}
                 </div>

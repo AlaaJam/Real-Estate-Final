@@ -1,34 +1,23 @@
-// src/helpers/api.js
-const DEV_BASE = "http://localhost:7542"; // backend
-const ENV_BASE = (process.env.REACT_APP_API_URL || DEV_BASE).replace(/\/$/, "");
 
-/**
- * api("/api/properties?page=1")
- * api("api/properties/1")
- * api("http://localhost:7542/api/properties")
- */
-export async function api(path, init = {}) {
-  let url = path;
 
-  if (!/^https?:\/\//i.test(path)) {
-    // normalize: ensure it becomes http://localhost:7542/api/...
-    const p = path.replace(/^\/+/, "");
-    url = p.startsWith("api/") ? `${ENV_BASE}/${p}` :
-      p.startsWith("/api/") ? `${ENV_BASE}${path}` :
-        `${ENV_BASE}/api/${p}`;
-  }
+export async function api(path, opts = {}) {
+  const init = {
+    credentials: "include",                    // ⬅️ IMPORTANT
+    method: opts.method || "GET",
+    headers:
+      opts.body instanceof FormData
+        ? (opts.headers || {})                 // let browser set multipart boundary
+        : { "Content-Type": "application/json", ...(opts.headers || {}) },
+    ...opts,
+  };
 
-  // public GET: don't send cookies (avoids preflight headaches)
-  const res = await fetch(url, {
-    method: "GET",
-    credentials: "omit",
-    headers: { Accept: "application/json", ...(init.headers || {}) },
-    ...init,
-  });
+  const url = (process.env.REACT_APP_API_URL || "http://localhost:7542") + path;
+  const res = await fetch(url, init);
 
   if (!res.ok) {
-    const txt = await res.text().catch(() => "");
-    throw new Error(`HTTP ${res.status}${txt ? ` - ${txt}` : ""}`);
+    const msg = await res.text();
+    throw new Error(`HTTP ${res.status} - ${msg}`);
   }
-  return res.json();
+  const ct = res.headers.get("content-type") || "";
+  return ct.includes("application/json") ? res.json() : res.text();
 }

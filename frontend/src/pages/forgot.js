@@ -9,9 +9,9 @@ const Forgott = () => {
       <Forgot>
         <Forgot.Container>
           <Forgot.Content>
-            <Forgot.Header>
+            {/* <Forgot.Header>
               <Forgot.Title>Reset Your Password</Forgot.Title>
-            </Forgot.Header>
+            </Forgot.Header> */}
             <Forgot.InnerContent>
               <Form>
                 <Form.FormGroup>

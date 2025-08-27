@@ -3,7 +3,7 @@ import { agents } from "../data/agents.js";
 
 const router = Router();
 
-// GET /api/agents?featured=true&limit=3
+
 router.get("/", (req, res) => {
   let data = agents;
   const { featured, limit } = req.query;

@@ -1,4 +1,3 @@
-// backend/src/db.js
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 import path from "path";
@@ -17,7 +16,6 @@ export const db = await open({
 await db.exec("PRAGMA foreign_keys = ON;");
 await db.exec("PRAGMA busy_timeout = 5000");
 
-// -- أساس جدول العقارات
 export async function ensurePropertiesTable() {
   await db.exec(`
     CREATE TABLE IF NOT EXISTS properties (
@@ -33,12 +31,14 @@ export async function ensurePropertiesTable() {
     );
   `);
 
-  // أعمدة إضافية عشان التفاصيل (JSON strings)
   const cols = await db.all(`PRAGMA table_info(properties);`);
   const have = new Set(cols.map(c => c.name));
   const addIfMissing = async (name, type) => {
     if (!have.has(name)) await db.exec(`ALTER TABLE properties ADD COLUMN ${name} ${type};`);
   };
+
+  await addIfMissing("user_id", "INTEGER");                 // FK soft-link
+await db.exec(`CREATE INDEX IF NOT EXISTS idx_prop_user ON properties(user_id);`);
 
   await addIfMissing("location", "TEXT");
   await addIfMissing("type", "TEXT");
@@ -50,7 +50,7 @@ export async function ensurePropertiesTable() {
   await addIfMissing("address_json", "TEXT");   // {"address":"...", ...}
 }
 
-// -- users (كما هو)
+
 export async function ensureUsersTable() {
   await db.exec(`
     CREATE TABLE IF NOT EXISTS users (
@@ -76,10 +76,9 @@ export async function ensureUserProfileColumns() {
   await addIfMissing("state", "TEXT");
 }
 
-// -- Seed بيانات تجريبية إذا الجدول فاضي
 export async function seedFakeProperties() {
   const { c } = await db.get(`SELECT COUNT(*) AS c FROM properties;`);
-  if (c > 0) return; // موجودة بيانات، ما نعيد
+  if (c > 0) return; 
 
   const sample = [
     {
@@ -151,7 +150,7 @@ export async function seedFakeProperties() {
   await stmt.finalize();
 }
 
-// شغّل التحضيرات
+
 await ensurePropertiesTable();
 await ensureUsersTable();
 await ensureUserProfileColumns();

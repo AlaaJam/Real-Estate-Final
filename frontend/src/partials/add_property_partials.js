@@ -276,5 +276,5 @@ const Details = ({ form, onChange }) => {
 };
 
 export { Description, Location, Media, Details };
-// alias عشان ما يكسر imports القديمة
+
 export { Description as Descrition };

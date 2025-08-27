@@ -16,7 +16,6 @@ export const PropertGallery = ({ image = [] }) => {
   );
 };
 
-// ✅ Features آمن
 export const PropertyFeatures = ({ features = {} }) => {
   const {
     bedrooms = 0,
@@ -26,7 +25,7 @@ export const PropertyFeatures = ({ features = {} }) => {
     kitchen = 0,
   } = features || {};
 
-  const [shown, setShown] = useState(false);
+  const [shown, setShown] = useState(true);
   return (
     <Property.Info>
       <Property.InfoHeader onClick={() => setShown(s => !s)}>
@@ -50,10 +49,10 @@ export const PropertyFeatures = ({ features = {} }) => {
   );
 };
 
-// ✅ Amenities آمن
+
 export const PropertyAmenities = ({ amenities = [] }) => {
   const list = Array.isArray(amenities) ? amenities : [];
-  const [shown, setShown] = useState(false);
+  const [shown, setShown] = useState(true);
 
   return (
     <Property.Info>
@@ -76,10 +75,10 @@ export const PropertyAmenities = ({ amenities = [] }) => {
   );
 };
 
-// ✅ Address آمن
+
 export const PropertyAddress = ({ address = {} }) => {
   const a = address || {};
-  const [shown, setShown] = useState(false);
+  const [shown, setShown] = useState(true);
 
   return (
     <Property.Info>
@@ -108,7 +107,8 @@ export const PropertyAddress = ({ address = {} }) => {
 
 
 export const PropertyDescription = ({ description }) => {
-  const [descriptionShown, setContentShown] = useState(false);
+ const [descriptionShown, setContentShown] = useState(true);
+
 
   const contentHandler = () => {
     setContentShown((previousState) => !previousState);

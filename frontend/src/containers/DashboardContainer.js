@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Dashboard } from "../components";
-import { adminurls } from "../constants/routes/adminurls";
+import { adminurls } from "../routes/adminurls";
 
 const API_BASE = process.env.REACT_APP_API_BASE || ""; // use CRA proxy or env
+// const isAdmin = user?.email === "admin@gmail.com";
+ 
+
+
+
 
 const DashboardContainer = ({ title, children, role }) => {
   const [show, setShow] = useState(false);
   const [pro, setPro] = useState(true);
-
   const [user, setUser] = useState(null);
+
+    const isAdmin = user?.email === "admin@gmail.com";
 
   const handleDashboardNavigationOpen = () => {
     setShow(true);
@@ -20,12 +26,12 @@ const DashboardContainer = ({ title, children, role }) => {
     setPro(true);
   };
 
-  // 🔐 Load current user (for the name)
+  //  Load current user (for the name)
   useEffect(() => {
     let isMounted = true;
     (async () => {
       try {
-        const res = await fetch(`${API_BASE}/api/users/me`, {
+        const res = await fetch(`${API_BASE}/api/auth/me`, {
           method: "GET",
           credentials: "include",
         });
@@ -40,7 +46,7 @@ const DashboardContainer = ({ title, children, role }) => {
   }, []);
 
   const displayName = user?.name?.trim() || user?.email || "My Account";
-  const roleLabel = role || (user?.role ? user.role : null); // optional
+  const roleLabel = role || (user?.role ? user.role : null); 
 
   return (
     <Dashboard>
@@ -72,7 +78,9 @@ const DashboardContainer = ({ title, children, role }) => {
 
           <Dashboard.LeftContent>
             <Dashboard.List>
-              {adminurls.map((item) =>
+                {adminurls
+            .filter((item) => isAdmin || item.url !== "/dashboard")
+            .map((item) =>
                 item.subUrl ? (
                   <LinksWithSubLinks key={item.name} url={item} />
                 ) : (

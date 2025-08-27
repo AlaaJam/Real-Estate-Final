@@ -19,14 +19,14 @@ import {
   LisitngButton,
 } from "./styles/listing";
 
-/** Helper: currency formatting (اختياري، يستخدم لو مررتِ amount) */
+
 const fmtCurrency = (n, { currency = "JOD", locale = "en-US" } = {}) => {
   if (typeof n !== "number") return n;
   return `${currency} ${n.toLocaleString(locale)}`;
 };
 
 const Listing = ({ children, width, ...restProps }) => {
-  // ملاحظة: width صار غير ضروري لو بتستخدمي CSS Grid، لكن أتركناه للتوافق
+
   return (
     <Container {...restProps} width={width}>
       {children}
@@ -45,14 +45,16 @@ Listing.Anchor = ({ children, to = "#", ...restProps }) => (
 );
 
 Listing.Image = ({ source, alt, ...restProps }) => {
+    console.log("dssdsdsdsd==> "+source )
   const first = Array.isArray(source) ? source[0] : source;
+  console.log("firsttttt==> "+first)
   const isAbsolute =
     typeof first === "string" &&
     (first.startsWith("http://") || first.startsWith("https://") || first.startsWith("/"));
-  const src = isAbsolute ? first : `/images/houses/${first || "placeholder.jpg"}`;
+  const src = isAbsolute ? first : `/images/houses/${first || "image6.jpg"}`;
 
   const onError = (e) => {
-    // امنعي حلقة onError: استعملي data-flag
+//here the problem
     if (e.currentTarget.dataset.fallback !== "1") {
       e.currentTarget.dataset.fallback = "1";
       e.currentTarget.src = "/images/houses/placeholder.jpg";

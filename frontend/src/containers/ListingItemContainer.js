@@ -4,6 +4,9 @@ import { Listing } from "../components";
 
 
 const ListingItemContainer = ({ featured, width }) => {
+
+  console.log("featured ===> "+featured.imageUrl);
+  
   if (!featured) return null;
 
 
@@ -11,7 +14,8 @@ const ListingItemContainer = ({ featured, width }) => {
     <Listing width={width}>
       <Listing.Top>
         <Listing.TopItem>
-          <Listing.Image src={featured.imageUrl} alt={featured.title} />
+         <Listing.Image source={featured.imageUrl} alt={featured.title} />
+
 
           <Listing.TopItemContainer>
             <Listing.TopItemInfo>

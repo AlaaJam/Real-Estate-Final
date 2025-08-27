@@ -6,11 +6,15 @@ import {
 import { api } from "../../helpers/api";
 
 
-const toPublicUrl = (name) => {
-  if (!name) return "houses/placeholder.jpg";// add houses
-  if (/^https?:\/\//i.test(name) || name.startsWith("/")) return name;
-  return `/images/houses/${name.replace(/^\/+/, "")}`;
-};
+// frontend/src/redux/actions/propertiesAction.js
+const API_BASE = (process.env.REACT_APP_API_URL || "http://localhost:7542").replace(/\/$/, "");
+
+ const toPublicUrl = (name) => {
+   if (!name) return `${API_BASE}/images/houses/placeholder.jpg`;
+   if (/^https?:\/\//i.test(name)) return name;                 // already absolute
+   if (name.startsWith("/")) return `${API_BASE}${name}`;        // /images/...
+   return `${API_BASE}/images/houses/${name.replace(/^\/+/, "")}`;
+ };
 
 const toCard = (row) => ({
   id: row.id,

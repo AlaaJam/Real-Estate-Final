@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SideNavigation } from "../components";
-import links from "../constants/routes/nav-links";
+import links from "../routes/nav-links";
 
 const SideNavigationContainer = ({
   sideNavShown,
