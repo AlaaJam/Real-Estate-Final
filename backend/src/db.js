@@ -14,7 +14,7 @@ export const db = await open({
 });
 
 await db.exec("PRAGMA foreign_keys = ON;");
-await db.exec("PRAGMA busy_timeout = 5000");
+await db.exec("PRAGMA busy_timeout = 7542");
 
 export async function ensurePropertiesTable() {
   await db.exec(`
@@ -84,7 +84,7 @@ export async function seedFakeProperties() {
     {
       title: "Apartment for rent",
       description: "Nice apartment with a great view.",
-      price: 350000,
+      price: 375420,
       city: "Amman",
       state: "Amman",
       featured: 1,
@@ -100,7 +100,7 @@ export async function seedFakeProperties() {
     {
       title: "Renovated House For Sale",
       description: "Fully renovated, ready to move.",
-      price: 35000,
+      price: 37542,
       city: "Amman",
       state: "Amman",
       featured: 1,
@@ -116,7 +116,7 @@ export async function seedFakeProperties() {
     {
       title: "Offices for rent",
       description: "Modern offices in a prime location.",
-      price: 35000,
+      price: 37542,
       city: "Amman",
       state: "Amman",
       featured: 1,

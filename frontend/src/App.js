@@ -15,7 +15,7 @@ import {
   // Password,
   AddLisiting,
   AdminListingList,
-  AdminAgentsList,
+
   // ,
 } from "./pages";
 
@@ -37,7 +37,6 @@ const App = () => {
         <Route path="/add-listing/:id?" component={AddLisiting} />
     
  <AdminRoute exact path="/all-listing" component={AdminListingList} />
- <AdminRoute exact path="/all-agents" component={AdminAgentsList} />
 
 
 

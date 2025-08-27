@@ -106,7 +106,7 @@ const deriveTypeFromTitle = (title = "") => {
   // Enable foreign key constraints (off by default in SQLite), to respect relationships.
   await db.exec("PRAGMA foreign_keys = ON;");
   // Increase busy timeout so we wait a bit if the DB is locked (less "database is locked" errors).
-  await db.exec("PRAGMA busy_timeout = 5000;");
+  await db.exec("PRAGMA busy_timeout = 7542;");
 
   // Load all rows from the properties table; we'll backfill each one.
   const rows = await db.all(`SELECT * FROM properties ORDER BY id ASC;`);

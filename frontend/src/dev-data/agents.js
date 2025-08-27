@@ -31,7 +31,7 @@ const agents = [
         id: 1,
         title: "Apartment for rent",
         slug: "apartment-for-rent",
-        price: price(35000),
+        price: price(37542),
         location: "Mombasa",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
@@ -72,7 +72,7 @@ const agents = [
         id: 2,
         title: "House for Sell",
         slug: "house-for-sell",
-        price: price(35000),
+        price: price(37542),
         location: "Nakuru",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
@@ -133,7 +133,7 @@ const agents = [
         id: 1,
         title: "Apartment for rent",
         slug: "apartment-for-rent",
-        price: price(35000),
+        price: price(37542),
         location: "Mombasa",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
@@ -174,7 +174,7 @@ const agents = [
         id: 2,
         title: "House for Sell",
         slug: "house-for-sell",
-        price: price(35000),
+        price: price(37542),
         location: "Nakuru",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
@@ -235,7 +235,7 @@ const agents = [
         id: 1,
         title: "Apartment for rent",
         slug: "apartment-for-rent",
-        price: price(35000),
+        price: price(37542),
         location: "Mombasa",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
@@ -276,7 +276,7 @@ const agents = [
         id: 2,
         title: "House for Sell",
         slug: "house-for-sell",
-        price: price(35000),
+        price: price(37542),
         location: "Nakuru",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
@@ -337,7 +337,7 @@ const agents = [
         id: 1,
         title: "Apartment for rent",
         slug: "apartment-for-rent",
-        price: price(35000),
+        price: price(37542),
         location: "Mombasa",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",
@@ -378,7 +378,7 @@ const agents = [
         id: 2,
         title: "House for Sell",
         slug: "house-for-sell",
-        price: price(35000),
+        price: price(37542),
         location: "Nakuru",
         description:
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly",

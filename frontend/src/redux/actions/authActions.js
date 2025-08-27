@@ -3,7 +3,7 @@ import { api } from "../../helpers/api";
 // redux/actions/authActions.js
 export const signup = (name, email, password) => async (dispatch) => {
   try {
-    const res = await fetch("http://localhost:5000/signup", {
+    const res = await fetch("http://localhost:7542/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password }),
