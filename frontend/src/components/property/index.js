@@ -101,7 +101,7 @@ Property.Image = ({ children, source, alt, ...restProps }) => {
   const onError = (e) => {
     if (e.currentTarget.dataset.fallback !== "1") {
       e.currentTarget.dataset.fallback = "1";
-      e.currentTarget.src = "/images/placeholder.jpg";
+      e.currentTarget.src = "/images/houses/placeholder.jpg";
     }
   };
 

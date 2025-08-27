@@ -80,7 +80,7 @@ export const Content = styled.div`
   }
 `;
 export const Left = styled.div`
-  width: 68%;
+  width: 100%;
   @media only screen and (max-width: 600px) {
     width: 100%;
   }
@@ -89,7 +89,8 @@ export const Left = styled.div`
   }
 `;
 export const Right = styled.div`
-  width: 30%;
+  display: none;
+  width: 0;
   @media only screen and (max-width: 600px) {
     width: 100%;
   }

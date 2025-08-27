@@ -55,7 +55,7 @@ Listing.Image = ({ source, alt, ...restProps }) => {
     // امنعي حلقة onError: استعملي data-flag
     if (e.currentTarget.dataset.fallback !== "1") {
       e.currentTarget.dataset.fallback = "1";
-      e.currentTarget.src = "/images/placeholder.jpg";
+      e.currentTarget.src = "/images/houses/placeholder.jpg";
     }
   };
 

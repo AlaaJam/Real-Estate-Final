@@ -1,67 +1,58 @@
+// src/pages/listings.js
 import React, { useEffect } from "react";
-import styled from "styled-components/macro";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  HeaderContainer,
-  ListingItemContainer,
-  FooterContainer,
-} from "../containers";
+import { HeaderContainer, ListingItemContainer, FooterContainer } from "../containers";
 import { Section } from "../components";
 import { getPropertyList } from "../redux/actions/propertiesAction";
 
-/* Full-bleed version of Section.InnerContainer */
-const FullBleed = styled(Section.InnerContainer)`
-  width: 100%;
-  max-width: none;            /* remove the built-in container width */
-  padding-left: clamp(12px, 2vw, 24px);
-  padding-right: clamp(12px, 2vw, 24px);
-`;
+const pageStyle  = { minHeight: "100vh", display: "flex", flexDirection: "column" };
+const mainStyle  = { flex: 1, display: "block" }; // keeps footer at bottom
+const sectionStyle = { margin: "24px auto", maxWidth: 1200 };
+const cardsStyle = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+  gap: 24,
+};
+const emptyStyle = { padding: "48px 0", textAlign: "center", color: "#6b7280", fontSize: "1.1rem" };
 
-/* Stretch cards to fill the row */
-const Cards = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
-`;
-
-const Listing = () => {
+const Listings = () => {
   const dispatch = useDispatch();
-  const listProperties = useSelector((state) => state.propertyList);
-  const properties = listProperties?.properties || [];
+  const { properties = [] } = useSelector((s) => s.propertyList || {});
 
   useEffect(() => {
     dispatch(getPropertyList());
+    window.scrollTo(0, 0);
   }, [dispatch]);
 
   return (
-    <>
-      <HeaderContainer bg="false" />
+    <div style={pageStyle}>
+      {/* Nav only — no hero/banner */}
+      <HeaderContainer />
 
-      <Section bgColor="--bs-fade-info">
-        <FullBleed>
-          <Section.Title style={{ textAlign: "center" }}>
-            Our Property List
-          </Section.Title>
+      <main style={mainStyle}>
+        <Section style={sectionStyle}>
+          <Section.InnerContainer>
+            {/* Keep the title only; removed any extra “top thing” */}
+            <Section.Title>All Properties</Section.Title>
 
-          <Cards>
-            {properties.map((featured) => (
-              <ListingItemContainer
-                key={featured.id}
-                featured={featured}
-                width="100%"   /* let each card fill its grid cell */
-              />
-            ))}
-          </Cards>
-
-          <Section.Footer style={{ display: "flex", justifyContent: "center" }}>
-            <Section.Button>More Listing</Section.Button>
-          </Section.Footer>
-        </FullBleed>
-      </Section>
+            <Section.Content>
+              {properties.length === 0 ? (
+                <div style={emptyStyle}>No properties found.</div>
+              ) : (
+                <div style={cardsStyle}>
+                  {properties.map((p) => (
+                    <ListingItemContainer key={p.id} featured={p} width="100%" />
+                  ))}
+                </div>
+              )}
+            </Section.Content>
+          </Section.InnerContainer>
+        </Section>
+      </main>
 
       <FooterContainer />
-    </>
+    </div>
   );
 };
 
-export default Listing;
+export default Listings;

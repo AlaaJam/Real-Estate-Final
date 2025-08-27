@@ -8,7 +8,7 @@ import {
 import { Section, Property } from "../components";
 import {
   HeaderContainer,
-  ContactAgentContainer,
+  // ContactAgentContainer,
   PropertyRelatedContainer,
   FooterContainer,
 } from "../containers";
@@ -92,7 +92,7 @@ if (isLoading) {
               <PropertyDescription description={property.description} />
             </Property.Left>
             <Property.Right>
-              <ContactAgentContainer property={property} />
+       
               <PropertyRelatedContainer
                 property={property}
                 featured={filteredFeatured}

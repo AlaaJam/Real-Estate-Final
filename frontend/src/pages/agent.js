@@ -6,7 +6,7 @@ import { Section, Agent } from "../components";
 import {
   HeaderContainer,
   ListingItemContainer,
-  ContactAgentContainer,
+  // ContactAgentContainer,
   PropertyRelatedContainer,
   FooterContainer,
 } from "../containers";
@@ -139,7 +139,7 @@ const Agentt = () => {
               </Agent.Listing>
             </Agent.Left>
             <Agent.Right>
-              <ContactAgentContainer property={contactAgent} />
+              {/* <ContactAgentContainer property={contactAgent} /> */}
               <PropertyRelatedContainer featured={featuredProperties} />
             </Agent.Right>
           </Agent.Content>
