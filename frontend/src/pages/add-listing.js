@@ -5,18 +5,18 @@ import { HeaderContainer, FooterContainer } from "../containers";
 import { Section } from "../components";
 import { api } from "../helpers/api";
 
-const pageStyle  = { minHeight: "100vh", display: "flex", flexDirection: "column" };
-const mainStyle  = { flex: 1 };
-const formWrap   = { margin: "24px auto", maxWidth: 900 };
-const grid       = { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 };
-const row        = { display: "grid", gridTemplateColumns: "1fr", gap: 8, marginBottom: 12 };
-const full       = { gridColumn: "1 / -1" };
-const label      = { fontWeight: 600 };
-const input      = { padding: 10, border: "1px solid #e5e7eb", borderRadius: 6 };
-const textarea   = { ...input, minHeight: 110, resize: "vertical" };
-const help       = { fontSize: 12, color: "#6b7280" };
-const actions    = { display: "flex", gap: 12, marginTop: 16 };
-const btn        = { padding: "10px 16px", borderRadius: 8, border: 0, cursor: "pointer" };
+const pageStyle = { minHeight: "100vh", display: "flex", flexDirection: "column" };
+const mainStyle = { flex: 1 };
+const formWrap = { margin: "24px auto", maxWidth: 900 };
+const grid = { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 };
+const row = { display: "grid", gridTemplateColumns: "1fr", gap: 8, marginBottom: 12 };
+const full = { gridColumn: "1 / -1" };
+const label = { fontWeight: 600 };
+const input = { padding: 10, border: "1px solid #e5e7eb", borderRadius: 6 };
+const textarea = { ...input, minHeight: 110, resize: "vertical" };
+const help = { fontSize: 12, color: "#6b7280" };
+const actions = { display: "flex", gap: 12, marginTop: 16 };
+const btn = { padding: "10px 16px", borderRadius: 8, border: 0, cursor: "pointer" };
 const primaryBtn = { ...btn, background: "#2563eb", color: "white" };
 
 
@@ -25,12 +25,12 @@ const primaryBtn = { ...btn, background: "#2563eb", color: "white" };
 export default function AddListingPage() {
   const history = useHistory();
 
-const [listedIn, setListedIn] = useState("sales");   // "rentals" or "sales"
-const [category, setCategory] = useState("Houses");
+  const [listedIn, setListedIn] = useState("sales");   // "rentals" or "sales"
+  const [category, setCategory] = useState("Houses");
 
 
   const [mainImageFile, setMainImageFile] = useState(null);
-const [galleryFiles, setGalleryFiles] = useState([]);
+  const [galleryFiles, setGalleryFiles] = useState([]);
 
   const [base, setBase] = useState({
     title: "",
@@ -66,60 +66,60 @@ const [galleryFiles, setGalleryFiles] = useState([]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
- 
 
-const onSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    setSaving(true);
-    setError("");
 
-    const fd = new FormData();
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setSaving(true);
+      setError("");
 
-    // basic fields
-    fd.append("title",       base.title || "");
-    fd.append("description", base.description || "");
-    fd.append("price",       base.price || "");
-    fd.append("city",        base.city || "");
-    fd.append("state",       base.state || "");
-    fd.append("featured",    base.featured ? "1" : "0");
+      const fd = new FormData();
 
-    // NEW: taxonomy
-    fd.append("listedIn", listedIn);
-    fd.append("category", category);
+      // basic fields
+      fd.append("title", base.title || "");
+      fd.append("description", base.description || "");
+      fd.append("price", base.price || "");
+      fd.append("city", base.city || "");
+      fd.append("state", base.state || "");
+      fd.append("featured", base.featured ? "1" : "0");
 
-    // NEW: JSON blobs (as strings)
-    // features -> numbers where appropriate
-    const featuresToSend = {
-      bedrooms: Number(features.bedrooms) || 0,
-      bathrooms: Number(features.bathrooms) || 0,
-      garage: Number(features.garage) || 0,
-      status: features.status || "Active",
-      kitchen: features.kitchen || "Available",
-      elevator: features.elevator || "No",
-    };
-    fd.append("features", JSON.stringify(featuresToSend));
-    fd.append("address",  JSON.stringify(address));
+      // NEW: taxonomy
+      fd.append("listedIn", listedIn);
+      fd.append("category", category);
 
-    // NEW: amenities (comma/line separated string OK)
-    fd.append("amenities", amenities || "");
+      // NEW: JSON blobs (as strings)
+      // features -> numbers where appropriate
+      const featuresToSend = {
+        bedrooms: Number(features.bedrooms) || 0,
+        bathrooms: Number(features.bathrooms) || 0,
+        garage: Number(features.garage) || 0,
+        status: features.status || "Active",
+        kitchen: features.kitchen || "Available",
+        elevator: features.elevator || "No",
+      };
+      fd.append("features", JSON.stringify(featuresToSend));
+      fd.append("address", JSON.stringify(address));
 
-    // files
-    if (mainImageFile) fd.append("mainImage", mainImageFile);
-    galleryFiles.forEach(file => fd.append("gallery", file));
+      // NEW: amenities (comma/line separated string OK)
+      fd.append("amenities", amenities || "");
 
-    const created = await api("/api/properties", {
-      method: "POST",
-      body: fd, // don't set Content-Type manually
-    });
+      // files
+      if (mainImageFile) fd.append("mainImage", mainImageFile);
+      galleryFiles.forEach(file => fd.append("gallery", file));
 
-    history.push(`/property/${created.id}`);
-  } catch (err) {
-    setError(err.message || "Failed to save");
-  } finally {
-    setSaving(false);
-  }
-};
+      const created = await api("/api/properties", {
+        method: "POST",
+        body: fd, // don't set Content-Type manually
+      });
+
+      history.push(`/property/${created.id}`);
+    } catch (err) {
+      setError(err.message || "Failed to save");
+    } finally {
+      setSaving(false);
+    }
+  };
 
 
   // const reset = () => {
@@ -168,58 +168,58 @@ const onSubmit = async (e) => {
 
 
                 <div style={row}>
-  <label style={label}>Listed In *</label>
-  <select style={input} value={listedIn} onChange={e => setListedIn(e.target.value)} required>
-    <option value="sales">Sales</option>
-    <option value="rentals">Rentals</option>
-  </select>
-</div>
+                  <label style={label}>Listed In *</label>
+                  <select style={input} value={listedIn} onChange={e => setListedIn(e.target.value)} required>
+                    <option value="sales">Sales</option>
+                    <option value="rentals">Rentals</option>
+                  </select>
+                </div>
 
-<div style={row}>
-  <label style={label}>Category *</label>
-  <select style={input} value={category} onChange={e => setCategory(e.target.value)} required>
-    <option>Houses</option>
-    <option>Apartments</option>
-    <option>Condos</option>
-    <option>Townhomes</option>
-    <option>Offices</option>
-    <option>Retails</option>
-    <option>Land</option>
-  </select>
-</div>
+                <div style={row}>
+                  <label style={label}>Category *</label>
+                  <select style={input} value={category} onChange={e => setCategory(e.target.value)} required>
+                    <option>Houses</option>
+                    <option>Apartments</option>
+                    <option>Condos</option>
+                    <option>Townhomes</option>
+                    <option>Offices</option>
+                    <option>Retails</option>
+                    <option>Land</option>
+                  </select>
+                </div>
 
 
                 <div style={{ ...row, ...full }}>
-  <label style={label}>Main Image</label>
-  <input
-    style={input}
-    type="file"
-    accept="image/*"
-    onChange={(e) => setMainImageFile(e.target.files?.[0] || null)}
-  />
-  <div style={help}>Upload exactly one image for the main photo.</div>
-</div>
+                  <label style={label}>Main Image</label>
+                  <input
+                    style={input}
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setMainImageFile(e.target.files?.[0] || null)}
+                  />
+                  <div style={help}>Upload exactly one image for the main photo.</div>
+                </div>
 
 
-                <div style={{...row, ...full}}>
+                <div style={{ ...row, ...full }}>
                   <label style={label}>Description</label>
                   <textarea style={textarea} value={base.description} onChange={e => setBase({ ...base, description: e.target.value })} />
                 </div>
 
-              <div style={{ ...row, ...full }}>
-  <label style={label}>Gallery Images</label>
-  <input
-    style={input}
-    type="file"
-    multiple
-    accept="image/*"
-    onChange={(e) => setGalleryFiles(Array.from(e.target.files || []))}
-  />
-  <div style={help}>You can select multiple images.</div>
-</div>
+                <div style={{ ...row, ...full }}>
+                  <label style={label}>Gallery Images</label>
+                  <input
+                    style={input}
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    onChange={(e) => setGalleryFiles(Array.from(e.target.files || []))}
+                  />
+                  <div style={help}>You can select multiple images.</div>
+                </div>
 
 
-                <div style={{...row, ...full}}>
+                <div style={{ ...row, ...full }}>
                   <label style={label}>Amenities</label>
                   <textarea
                     style={textarea}
@@ -271,7 +271,7 @@ const onSubmit = async (e) => {
                 </div>
 
                 {/* Address */}
-                <div style={{...row, ...full}}>
+                <div style={{ ...row, ...full }}>
                   <label style={label}>Address (line)</label>
                   <input style={input} value={address.address} onChange={e => setAddress({ ...address, address: e.target.value })} />
                 </div>
@@ -308,7 +308,7 @@ const onSubmit = async (e) => {
                 </div>
 
                 {error && (
-                  <div style={{...full, color: "#b91c1c", marginTop: 4}}>{error}</div>
+                  <div style={{ ...full, color: "#b91c1c", marginTop: 4 }}>{error}</div>
                 )}
               </div>
             </form>

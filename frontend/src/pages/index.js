@@ -9,6 +9,6 @@ export { default as UserProfile } from "./profile";
 export { default as Messages } from "./messages";
 export { default as Password } from "./change-password";
 export { default as AddLisiting } from "./add-listing";
-export { default as AdminListingList } from "./admin-lisitng";
+export { default as MyListingList } from "./admin-lisitng";
 export { default as AdminAgentsList } from "./admin-agents";
 export { default as AgentListing } from "./agent-listing";

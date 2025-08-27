@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import authRouter, { requireAuth } from "./routes/auth.js";
 import usersRouter from "./routes/users.js";
-
+import statsRouter from "./routes/stats.js";
 import propertiesRouter from "./routes/properties.js";
 
 import { UPLOAD_DIR } from "./uploads.js";
@@ -47,6 +47,7 @@ app.get("/api/protected-ping", requireAuth, (req, res) =>
   res.json({ pong: true, user: req.user })
 );
 
+app.use("/api/stats", requireAuth, statsRouter);
 
 app.use("/api/properties", propertiesRouter);
 

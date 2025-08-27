@@ -14,7 +14,7 @@ import {
   Messages,
   // Password,
   AddLisiting,
-  AdminListingList,
+  MyListingList,
 
   // ,
 } from "./pages";
@@ -36,7 +36,7 @@ const App = () => {
         {/* <Route exact path="/change-password" component={Password} /> */}
         <Route path="/add-listing/:id?" component={AddLisiting} />
     
- <AdminRoute exact path="/all-listing" component={AdminListingList} />
+ <AdminRoute exact path="/all-listing" component={MyListingList} />
 
 
 
