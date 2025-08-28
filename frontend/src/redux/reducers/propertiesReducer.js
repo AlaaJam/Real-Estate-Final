@@ -8,7 +8,7 @@ export const propertyListReducer = (state = { properties: [] }, action) => {
   switch (action.type) {
     case GET_PROPERTIES:
       return { properties: action.payload };
-    default:
+    default:s
       return state;
   }
 };

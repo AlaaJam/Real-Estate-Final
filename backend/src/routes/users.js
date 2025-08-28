@@ -19,6 +19,7 @@ router.get("/me", requireAuth, async (req, res) => {
 router.put("/me", requireAuth, async (req, res) => {
     const { name, phone, address1, city, state } = req.body || {};
     await db.run(
+        // “use the new value if it’s not NULL / for partial updates.
         `UPDATE users
      SET name = COALESCE(?, name),
          phone = COALESCE(?, phone),

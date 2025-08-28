@@ -1,13 +1,13 @@
-import React from "react";
+// import React from "react";
 
-import { Container, Content } from "./styles/admin_agents";
+// import { Container, Content } from "./styles/admin_agents";
 
-const AdminAgents = ({ children, ...restProps }) => {
-  return <Container {...restProps}>{children}</Container>;
-};
+// const AdminAgents = ({ children, ...restProps }) => {
+//   return <Container {...restProps}>{children}</Container>;
+// };
 
-AdminAgents.Content = ({ children, ...restProps }) => {
-  return <Content {...restProps}>{children}</Content>;
-};
+// AdminAgents.Content = ({ children, ...restProps }) => {
+//   return <Content {...restProps}>{children}</Content>;
+// };
 
-export default AdminAgents;
+// export default AdminAgents;

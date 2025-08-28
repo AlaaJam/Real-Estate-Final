@@ -1,4 +1,4 @@
-import React from "react";
+
 import {
   Container,
   Description,
@@ -21,6 +21,14 @@ import {
   Button,
   Footer,
 } from "./styles/add";
+
+
+
+//  * Purpose:  wrapper for the “Add Property” page.
+//  * It re-exports styled blocks from "./styles/add" as <Add.*> subcomponents
+// the purpose
+//  * so you can compose the page section-by-section without any business logic here.
+//  *
 
 const Add = ({ children, ...restProps }) => {
   return <Container {...restProps}>{children}</Container>;

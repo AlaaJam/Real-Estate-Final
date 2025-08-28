@@ -1,44 +1,44 @@
-import React from "react";
-import {
-  Container,
-  Head,
-  Body,
-  Row,
-  Data,
-  Button,
-  Anchor,
-} from "./styles/table";
+// import React from "react";
+// import {
+//   Container,
+//   Head,
+//   Body,
+//   Row,
+//   Data,
+//   Button,
+//   Anchor,
+// } from "./styles/table";
 
-const Table = ({ children, ...restProps }) => {
-  return <Container {...restProps}>{children}</Container>;
-};
+// const Table = ({ children, ...restProps }) => {
+//   return <Container {...restProps}>{children}</Container>;
+// };
 
-Table.Head = ({ children, ...restProps }) => {
-  return <Head {...restProps}>{children}</Head>;
-};
+// Table.Head = ({ children, ...restProps }) => {
+//   return <Head {...restProps}>{children}</Head>;
+// };
 
-Table.Body = ({ children, ...restProps }) => {
-  return <Body {...restProps}>{children}</Body>;
-};
+// Table.Body = ({ children, ...restProps }) => {
+//   return <Body {...restProps}>{children}</Body>;
+// };
 
-Table.Row = ({ children, ...restProps }) => {
-  return <Row {...restProps}>{children}</Row>;
-};
+// Table.Row = ({ children, ...restProps }) => {
+//   return <Row {...restProps}>{children}</Row>;
+// };
 
-Table.Data = ({ children, ...restProps }) => {
-  return <Data {...restProps}>{children}</Data>;
-};
+// Table.Data = ({ children, ...restProps }) => {
+//   return <Data {...restProps}>{children}</Data>;
+// };
 
-Table.Button = ({ children, ...restProps }) => {
-  return <Button {...restProps}>{children}</Button>;
-};
+// Table.Button = ({ children, ...restProps }) => {
+//   return <Button {...restProps}>{children}</Button>;
+// };
 
-Table.Anchor = ({ children, to, ...restProps }) => {
-  return (
-    <Anchor to={to} {...restProps}>
-      {children}
-    </Anchor>
-  );
-};
+// Table.Anchor = ({ children, to, ...restProps }) => {
+//   return (
+//     <Anchor to={to} {...restProps}>
+//       {children}
+//     </Anchor>
+//   );
+// };
 
-export default Table;
+// export default Table;

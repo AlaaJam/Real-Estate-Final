@@ -9,6 +9,8 @@ import propertiesRouter from "./routes/properties.js";
 
 import { UPLOAD_DIR } from "./uploads.js";
 
+// /sets up your backend API
+// reachable from your frontend (React).
 // Make uploaded files reachable at http://localhost:7542/images/houses/...
 
 
@@ -42,11 +44,13 @@ app.get("/api/profile", requireAuth, (req, res) => {
 });
 
 // Simple protected test
-app.get("/api/health", (_req, res) => res.json({ ok: true }));
-app.get("/api/protected-ping", requireAuth, (req, res) =>
-  res.json({ pong: true, user: req.user })
-);
+// app.get("/api/health", (_req, res) => res.json({ ok: true }));
+// app.get("/api/protected-ping", requireAuth, (req, res) =>
+//   res.json({ pong: true, user: req.user })
+// );
 
+
+//this is for the dashboard 
 app.use("/api/stats", requireAuth, statsRouter);
 
 app.use("/api/properties", propertiesRouter);

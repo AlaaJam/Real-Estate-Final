@@ -1,9 +1,9 @@
-import styled from "styled-components/macro";
+// import styled from "styled-components/macro";
 
-const Container = styled.div``;
+// const Container = styled.div``;
 
-const Content = styled.div`
-  overflow-x: auto;
-`;
+// const Content = styled.div`
+//   overflow-x: auto;
+// `;
 
-export { Container, Content };
+// export { Container, Content };

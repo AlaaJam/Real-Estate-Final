@@ -7,14 +7,25 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DB_FILE = process.env.SQLITE_DB || path.join(__dirname, "../data/db.db");
+// migrations
 
+//opens a connection to a .db file,
+// opens a connection to a .db file,
+
+// turns on a few SQLite settings,
+
+// creates (or updates) the users and properties tables if they don’t exist,
+
+// seeds a few demo properties the very first time.
 export const db = await open({
   filename: DB_FILE,
   driver: sqlite3.Database,
 });
-
+// → enforces foreign key rules (so references can’t point to missing rows).
 await db.exec("PRAGMA foreign_keys = ON;");
-await db.exec("PRAGMA busy_timeout = 7542");
+await db.exec("PRAGMA busy_timeout = 5000"); // if the db locked
+
+// Creates properties if missing with basic columns:
 
 export async function ensurePropertiesTable() {
   await db.exec(`
@@ -50,7 +61,7 @@ await db.exec(`CREATE INDEX IF NOT EXISTS idx_prop_user ON properties(user_id);`
   await addIfMissing("address_json", "TEXT");   // {"address":"...", ...}
 }
 
-
+// Creates users if missing: id, name, email (unique), password (hash), created_at.
 export async function ensureUsersTable() {
   await db.exec(`
     CREATE TABLE IF NOT EXISTS users (
@@ -63,7 +74,10 @@ export async function ensureUsersTable() {
   `);
 }
 
+
+// Adds optional profile columns to users if they’re missing: phone, address1, city, state.
 export async function ensureUserProfileColumns() {
+
   const cols = await db.all(`PRAGMA table_info(users);`);
   const have = new Set(cols.map(c => c.name));
   const addIfMissing = async (name, type) => {
@@ -76,6 +90,11 @@ export async function ensureUserProfileColumns() {
   await addIfMissing("state", "TEXT");
 }
 
+
+// Checks if the table already has rows; if yes, does nothing.
+
+// If empty, inserts 3 sample properties (for your UI to show real data).
+
 export async function seedFakeProperties() {
   const { c } = await db.get(`SELECT COUNT(*) AS c FROM properties;`);
   if (c > 0) return; 
@@ -84,7 +103,7 @@ export async function seedFakeProperties() {
     {
       title: "Apartment for rent",
       description: "Nice apartment with a great view.",
-      price: 375420,
+      price: 350000,
       city: "Amman",
       state: "Amman",
       featured: 1,
@@ -100,7 +119,7 @@ export async function seedFakeProperties() {
     {
       title: "Renovated House For Sale",
       description: "Fully renovated, ready to move.",
-      price: 37542,
+      price: 35000,
       city: "Amman",
       state: "Amman",
       featured: 1,
@@ -116,7 +135,7 @@ export async function seedFakeProperties() {
     {
       title: "Offices for rent",
       description: "Modern offices in a prime location.",
-      price: 37542,
+      price: 35000,
       city: "Amman",
       state: "Amman",
       featured: 1,

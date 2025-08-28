@@ -14,33 +14,7 @@ const router = Router();
 const safeJSON = (txt, fallback) => {
   try { return txt ? JSON.parse(txt) : fallback; } catch { return fallback; }
 };
-const toInt = (v, d = 0) => {
-  const n = Number(v);
-  return Number.isFinite(n) ? n : d;
-};
-const baseName = (p) => {
-  if (!p) return null;
-  const s = String(p);
-  const ix = Math.max(s.lastIndexOf("/"), s.lastIndexOf("\\"));
-  return ix >= 0 ? s.slice(ix + 1) : s;
-};
-const choice = (arr) => arr[Math.floor(Math.random() * arr.length)];
-const categories = ["Houses","Apartments","Condos","Townhomes","Offices","Retails","Land"];
 
-const deriveCategoryFromTitle = (title = "") => {
-  const t = title.toLowerCase();
-  if (t.includes("villa") || t.includes("house")) return "Houses";
-  if (t.includes("condo")) return "Condos";
-  if (t.includes("apartment")) return "Apartments";
-  if (t.includes("office")) return "Offices";
-  return choice(categories);
-};
-const deriveTypeFromListedIn = (listedIn = "") => {
-  const l = String(listedIn).toLowerCase();
-  if (l === "rentals" || l === "rental") return "rental";
-  if (l === "sales" || l === "sale") return "sale";
-  return "sale";
-};
 
 // ---------- multer (files -> /images/houses) ----------
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });

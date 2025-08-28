@@ -29,6 +29,7 @@ router.get("/", async (_req, res) => {
 
     // per-day (last 30d)
     const usersDaily = await db.all(
+      // returns TEXT by formatting a date/time.
       `SELECT strftime('%Y-%m-%d', created_at) AS day, COUNT(*) AS count
        FROM users
        WHERE datetime(created_at) >= datetime('now','-30 day')
